@@ -1,0 +1,38 @@
+<mat-dialog-content class="form-container">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 mat-dialog-title>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>
+        <button mat-icon-button class="close-btn" (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </div>
+  
+  
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="Admin">Admin</mat-option>
+              <mat-option value="Editor">Editor</mat-option>
+              <mat-option value="Viewer">Viewer</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+      <div class="button-group">
+        <button mat-button type="button" (click)="onClose()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Save User</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  

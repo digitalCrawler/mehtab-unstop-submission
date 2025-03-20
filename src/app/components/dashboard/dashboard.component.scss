@@ -1,0 +1,41 @@
+// .containerDashboard {
+//     height: 100vh;
+//     width: 100vh;
+//   }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 10vh;
+  }
+  
+  footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+  }
+  
+//   .containerDashboard {
+//     display: flex;
+//     justify-content: center;
+//     height: 80vh;
+//   }
+  
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow: auto;
+    // max-width: 1200px; /* Adjust width as needed */
+  }
+  
+  .grid-container > * {
+    flex: 1 1 calc(16.66% - 10px); /* 6 items per row */
+    min-width: 400px; /* Minimum width before wrapping */
+  }
+  

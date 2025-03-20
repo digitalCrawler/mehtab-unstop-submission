@@ -1,0 +1,68 @@
+<div style="overflow: auto;">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>User List</h2>
+    <div class="d-flex gap-2">
+      <button mat-raised-button (click)="openUserDialog()" class="bg-prim">
+        <mat-icon>add</mat-icon> Add User
+      </button>     
+    </div>
+  </div>
+  <div class="d-flex justify-content-start align-items-center">
+    <mat-form-field appearance="outline">
+      <mat-label>Search Users</mat-label>
+      <input matInput (input)="applyFilter($event)" placeholder="Search by Name, Email, Role">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+      <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+    </ng-container>
+
+    <!-- Created On Column -->
+    <ng-container matColumnDef="createOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+      <td mat-cell *matCellDef="let user">{{ user.createOn | date: 'shortDate' }}</td>
+    </ng-container>
+
+    <!-- Edit Action Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-icon-button color="accent" (click)="openUserDialog(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        (dblclick)="onRowDoubleClick(row)" 
+        style="cursor: pointer;" 
+        matTooltip="Double Click To Edit">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" *ngIf="dataSource" showFirstLastButtons></mat-paginator>
+</div>

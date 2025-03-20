@@ -1,0 +1,55 @@
+@use "sass:color" as color;
+
+// Define Theme Variables
+$primary-color: #1c4980;
+$background-color: #383838;
+$input-height: 48px;
+$button-height: 48px;
+
+body {
+  background-color: $background-color;
+  color: white;
+}
+
+
+.mat-form-field-wrapper {
+  height: $input-height;
+}
+
+input, select, textarea {
+//   height: $input-height !important;
+//   padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+button {
+  height: $button-height;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+// Fix for Deprecation Warning
+.mat-raised-button, .mat-stroked-button {
+    height: $button-height;
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+        background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+}
+.bg-prim {
+    background-color: $primary-color!important;
+    color: white!important;
+}
+
+.bg-second {
+    background-color: $background-color;
+}
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+  
