@@ -13,7 +13,7 @@ Chart.register(...registerables);
 })
 
 export class ChartComponent {
-  chart!: Chart<"bar", number[], string>;
+  chart!: Chart<"pie", number[], string>;
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     if (this.chart) {
@@ -47,7 +47,7 @@ export class ChartComponent {
       this.chart.destroy();
     }
     this.chart = new Chart(this.chartCanvas.nativeElement, {
-      type: 'bar', // Bar chart
+      type: 'pie', // Bar chart
       data: {
         labels: Object.keys(this.userRolesCount), // Role names (Admin, Editor, etc.)
         datasets: [
